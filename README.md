@@ -1,29 +1,30 @@
 # Nyström Method
 This repository contains code for the Nystrom Method pertaining to the interior Dirichlet problem for the Laplace Equation
   
+# Nyström Method
+  
 ## Theoretical Formulation
   
 
 This notebook presents a simple example of how the Nyström Method can be used towards solving the Laplace Equation when considering a the scatterfield of a wave in the interior of a simple smooth geometry. For concreteness we shall use this method for solving the Dirichlet problem where we impose the condition that along the boundary $\Gamma$
 
+
+$$
+u({\mathbf{\textit{x}}})=g({\mathbf{\textit{x}}}),
+$$
+  
+
+Note that here ${\mathbf{\textit{x}}}$ is a vector given by ${\mathbf{\textit{x}}}=\left(x_1 ,x_2 \right)$. All together we have
+
   
 
 $$
-u({{\textrm{x}}})=g({{\textrm{x}}}),
-$$
-  
-
-Note that here ${{\textrm{x}}}$ is a vector given by ${{\textrm{x}}}=\left(x_1 ,x_2 \right)$. All together we have
-
-  
-
-$$
-\Delta u\left({{\textrm{x}}}\right)=0,\:\:{{\textrm{x}}}\in \Omega ,
+\Delta u\left({\mathbf{\textit{x}}}\right)=0,\:\:{\mathbf{\textit{x}}}\in \Omega ,
 $$
 > with                                            
 
 $$
-u({{\textrm{x}}})=g({{\textrm{x}}}),\:\:\forall {{\textrm{x}}}\in \Gamma
+u({\mathbf{\textit{x}}})=g({\mathbf{\textit{x}}}),\:\:\forall {\mathbf{\textit{x}}}\in \Gamma
 $$
   
 
@@ -32,55 +33,55 @@ For this problem, we use the double layer potential integral formulation of the 
   
 
 $$
-u\left({{\textrm{x}}}\right)=D\left\lbrack \varphi \right\rbrack \left({{\textrm{x}}}\right)=\int_{\Gamma } G({{\textrm{x}}},{{\textrm{y}}})\varphi ({{\textrm{y}}})ds({{\textrm{y}}})
+u\left({\mathbf{\textit{x}}}\right)=D\left\lbrack \varphi \right\rbrack \left({\mathbf{\textit{x}}}\right)=\int_{\Gamma } G({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\varphi ({\mathbf{\textit{y}}})ds({\mathbf{\textit{y}}})
 $$
   
 
-where $G\left({{\textrm{x}}},{{\textrm{y}}}\right)$ is the Green's function in free space and $\varphi$ satisfies the following relation:
+where $G\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$ is the Green's function in free space and $\varphi$ satisfies the following relation:
 
   
 
                                                 
 $$
-\frac{\varphi (x)}{2}+\int_{\Gamma } G({{\textrm{x}}},{{\textrm{y}}})\varphi ({{\textrm{y}}})ds({{\textrm{y}}})=g\left({{\textrm{x}}}\right)\;\;\;{{\textrm{x}}}\in \Gamma
+\frac{\varphi (x)}{2}+\int_{\Gamma } G({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\varphi ({\mathbf{\textit{y}}})ds({\mathbf{\textit{y}}})=g\left({\mathbf{\textit{x}}}\right)\;\;\;{\mathbf{\textit{x}}}\in \Gamma
 $$                                          
 $$
 [2]
 $$
   
 
-It is known that the kernel $G\left({{\textrm{x}}},{{\textrm{y}}}\right)$ for this problem is given by 
+It is known that the kernel $G\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$ for this problem is given by 
 
   
 
 $$
-G\left({{\textrm{x}}},{{\textrm{y}}}\right)=\textrm{K}\left({{\textrm{x}}},{{\textrm{y}}}\right):=-\frac{\left({{\textrm{x}}}-{{\textrm{y}}}\right)\cdot \nu \left({{\textrm{y}}}\right)}{2\pi {\left|{{\textrm{x}}}-{{\textrm{y}}}\right|}^2 }
+G\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)\mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right):=-\frac{\left({\mathbf{\textit{x}}}-{\mathbf{\textit{y}}}\right)\cdot \nu \left({\mathbf{\textit{y}}}\right)}{2\pi {\left|{\mathbf{\textit{x}}}-{\mathbf{\textit{y}}}\right|}^2 }
 $$
   
 
-It is also known that this kernel is continuous along a boundary that is twice continuously differentiable, meaning that in the specified geometry $\textrm{K}\left({{\textrm{x}}},{{\textrm{y}}}\right)$ has a removable singularity at ${{\textrm{x}}}={{\textrm{y}}}$. Thus, at such points we can assign $\textrm{K}\left({{\textrm{x}}},{{\textrm{y}}}\right)=\lim_{{{\textrm{x}}}\to {{\textrm{y}}}} \textrm{K}\left({{\textrm{x}}},{{\textrm{y}}}\right)$
+It is also known that this kernel is continuous along a boundary that is twice continuously differentiable, meaning that in the specified geometry \mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$ has a removable singularity at ${\mathbf{\textit{x}}}={\mathbf{\textit{y}}}$. Thus, at such points we can assign \mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)=\lim_{{\mathbf{\textit{x}}}\to {\mathbf{\textit{y}}}}\mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$
 
   
 
-We see that if we parametrize ${{\textrm{x}}}$ and ${{\textrm{y}}}$ as:
+We see that if we parametrize ${\mathbf{\textit{x}}}$ and ${\mathbf{\textit{y}}}$ as:
 
   
 
 $$
-{{\textrm{x}}}={{\textrm{r}}}(s)=\left(u(s),\:v(s)\right)
+{\mathbf{\textit{x}}}={\mathbf{\textit{r}}}(s)=\left(u(s),\:v(s)\right)
 $$
 > and                                                
 
 $$
-{{\textrm{y}}}={{\textrm{r}}}(t)=\left(u(t),\:v(t)\right)
+{\mathbf{\textit{y}}}={\mathbf{\textit{r}}}(t)=\left(u(t),\:v(t)\right)
 $$
   
 
-We get that  $\textrm{K}\left({{\textrm{x}}},{{\textrm{y}}}\right)=\tilde{\textrm{K}} (s,t):=\frac{-\left(u(s)-u(t)\right)v\prime (t)+\left(v(s)-v(t)\right)u\prime (t)}{2\pi \left|{{\textrm{r}}}\prime \left(t\right)\right|{\left|{{\textrm{r}}}\left(s\right)-{{\textrm{r}}}\left(t\right)\right|}^2 }$,
+We get that  \mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)=\tilde\mathbf{\textit{K}} (s,t):=\frac{-\left(u(s)-u(t)\right)v\prime (t)+\left(v(s)-v(t)\right)u\prime (t)}{2\pi \left|{\mathbf{\textit{r}}}\prime \left(t\right)\right|{\left|{\mathbf{\textit{r}}}\left(s\right)-{\mathbf{\textit{r}}}\left(t\right)\right|}^2 }$,
 
   
 
-In particular also, we are interested in evaluating the limit of $\tilde{\textrm{K}} (s,t)$ as $s\to t$.
+In particular also, we are interested in evaluating the limit of $\tilde\mathbf{\textit{K}} (s,t)$ as $s\to t$.
 
   
 
@@ -111,7 +112,7 @@ We have also by extension that
 
                            
 $$
-{{\textrm{r}}}(s)={{\textrm{r}}}(t)+(s-t){{\textrm{r}}}\prime (t)+\frac{(s-t)^2 }{2}{{\textrm{r}}}\prime \prime (t)+\mathcal{O}((s-t)^3 )
+{\mathbf{\textit{r}}}(s)={\mathbf{\textit{r}}}(t)+(s-t){\mathbf{\textit{r}}}\prime (t)+\frac{(s-t)^2 }{2}{\mathbf{\textit{r}}}\prime \prime (t)+\mathcal{O}((s-t)^3 )
 $$                  
 $$
 [5]
@@ -139,7 +140,7 @@ $$
 We have that
 
 $$
-{\left|{{\textrm{r}}}\left(s\right)-{{\textrm{r}}}\left(t\right)\right|}^2 =\left({{\textrm{r}}}\left(s\right)-{{\textrm{r}}}\left(t\right)\right)\cdot \left({{\textrm{r}}}\left(s\right)-{{\textrm{r}}}\left(t\right)\right)
+{\left|{\mathbf{\textit{r}}}\left(s\right)-{\mathbf{\textit{r}}}\left(t\right)\right|}^2 =\left({\mathbf{\textit{r}}}\left(s\right)-{\mathbf{\textit{r}}}\left(t\right)\right)\cdot \left({\mathbf{\textit{r}}}\left(s\right)-{\mathbf{\textit{r}}}\left(t\right)\right)
 $$
   
 
@@ -148,21 +149,21 @@ Substituting $[5]$ and expanding (where we would need to dot each term as you wo
   
 
 $$
-{\left|{{\textrm{r}}}\left(s\right)-{{\textrm{r}}}\left(t\right)\right|}^2 =(s-t)^2 {\left|{{\textrm{r}}}\prime (t)\right|}^2 +O((s-t)^3 )
+{\left|{\mathbf{\textit{r}}}\left(s\right)-{\mathbf{\textit{r}}}\left(t\right)\right|}^2 =(s-t)^2 {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^2 +O((s-t)^3 )
 $$
   
 
 $$
-\Rightarrow \left|{{\textrm{r}}}\prime \left(t\right)\right|{\left|{{\textrm{r}}}\left(s\right)-{{\textrm{r}}}\left(t\right)\right|}^2 =(s-t)^2 {\left|{{\textrm{r}}}\prime (t)\right|}^3 +O((s-t)^3 )
+\Rightarrow \left|{\mathbf{\textit{r}}}\prime \left(t\right)\right|{\left|{\mathbf{\textit{r}}}\left(s\right)-{\mathbf{\textit{r}}}\left(t\right)\right|}^2 =(s-t)^2 {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 +O((s-t)^3 )
 $$
   
 
-Substituting into our expression for $\tilde{\textrm{K}} (s,t)$ gives:
+Substituting into our expression for $\tilde\mathbf{\textit{K}} (s,t)$ gives:
 
   
 
 $$
-\tilde{\textrm{K}} (s,t)=\frac{\frac{(s-t)^2 }{2}\left\lbrack v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))\right\rbrack }{2\pi (s-t)^2 {\left|{{\textrm{r}}}\prime (t)\right|}^3 +O((s-t)^3 )}=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))}{4\pi {\left|{{\textrm{r}}}\prime (t)\right|}^3 +O((s-t))}
+\tilde\mathbf{\textit{K}} (s,t)=\frac{\frac{(s-t)^2 }{2}\left\lbrack v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))\right\rbrack }{2\pi (s-t)^2 {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 +O((s-t)^3 )}=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))}{4\pi {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 +O((s-t))}
 $$
   
 
@@ -171,23 +172,23 @@ Taking the limit as $s\to t$ we get
   
 
 $$
-\lim_{s\to t} \tilde{\textrm{K}} (s,t)=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)}{4\pi {\left|{{\textrm{r}}}\prime (t)\right|}^3 }
+\lim_{s\to t} \tilde\mathbf{\textit{K}} (s,t)=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)}{4\pi {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 }
 $$
   
 
-For ${{\textrm{x}}}\in \Gamma$, we use the special notation $T_{\textrm{K}} [\varphi ](x)$ to denote the double layer operator 
+For ${\mathbf{\textit{x}}}\in \Gamma$, we use the special notation $T_\mathbf{\textit{K}} [\varphi ](x)$ to denote the double layer operator 
 
   
 
 $$
-D[\varphi ](x)=\int_{\Gamma } \textrm{K}({{\textrm{x}}},{{\textrm{y}}})\:\varphi (y)\:d\sigma (y)
+D[\varphi ](x)=\int_{\Gamma }\mathbf{\textit{K}({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\:\varphi (y)\:d\sigma (y)
 $$
   
 
 Altogether we get the following:
 
 $$
-{T_{\textrm{K}} [\varphi ](x)=\int_{\Gamma } \textrm{K}({{\textrm{x}}},{{\textrm{y}}})\:\varphi (y)\:d\sigma (y)={\int_0^{2\pi } \tilde{\textrm{K}} (s,t)\:\varphi (t)\:|{{\textrm{r}}}\prime (t)|dt}}
+{T_\mathbf{\textit{K}} [\varphi ](x)=\int_{\Gamma }\mathbf{\textit{K}({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\:\varphi (y)\:d\sigma (y)={\int_0^{2\pi } \tilde\mathbf{\textit{K}} (s,t)\:\varphi (t)\:|{\mathbf{\textit{r}}}\prime (t)|dt}}
 $$
   
 
@@ -196,7 +197,7 @@ We then discretize the boundary with $n$ points and use trapezoidal rule to get
   
 
 $$
-{T_{\textrm{K}} [\varphi ](x_i )\approx {\sum_{j=0}^n \tilde{\textrm{K}} (t_i ,t_j )\:\varphi (t_j )\:|{{\textrm{r}}}\prime (t_j )|\Delta t}}
+{T_\mathbf{\textit{K}} [\varphi ](x_i )\approx {\sum_{j=0}^n \tilde\mathbf{\textit{K}} (t_i ,t_j )\:\varphi (t_j )\:|{\mathbf{\textit{r}}}\prime (t_j )|\Delta t}}
 $$
 
 We have from $[2]$ that 
@@ -204,7 +205,7 @@ We have from $[2]$ that
   
 
 $$
-\frac{1}{2}+{T_{\textrm{K}} [\varphi ](x_i )\approx \frac{1}{2}+{\sum_{j=0}^n \tilde{\textrm{K}} (t_i ,t_j )\:\varphi (t_j )\:|{{\textrm{r}}}\prime (t_j )|\Delta t=g(x_i )}}
+\frac{1}{2}+{T_\mathbf{\textit{K}} [\varphi ](x_i )\approx \frac{1}{2}+{\sum_{j=0}^n \tilde\mathbf{\textit{K}} (t_i ,t_j )\:\varphi (t_j )\:|{\mathbf{\textit{r}}}\prime (t_j )|\Delta t=g(x_i )}}
 $$
   
 
@@ -213,7 +214,7 @@ Doing this for all $n$ values of $i$, we get a linear system that we can solve.
 ## Observing Convergence of Numerical Solution
   
 
-We shall use the harmonic function $g\left({{\textrm{x}}}\right)=x_1^2 -x_2^2$ as the forcing term on the boundary. By choice of $g$, we know that the solution to $[1]$ is $u\left({{\textrm{x}}}\right)=g\left({{\textrm{x}}}\right)$ everywhere in the domain $\Omega$
+We shall use the harmonic function $g\left({\mathbf{\textit{x}}}\right)=x_1^2 -x_2^2$ as the forcing term on the boundary. By choice of $g$, we know that the solution to $[1]$ is $u\left({\mathbf{\textit{x}}}\right)=g\left({\mathbf{\textit{x}}}\right)$ everywhere in the domain $\Omega$
 
 ```matlab:Code
 clear all;
@@ -398,3 +399,4 @@ mdfile = export("Nystrom_Method.mlx",Format="markdown",EmbedImages=true, ...
 'EmbedImages' is not a recognized parameter. For a list of valid name-value pair arguments,
 see the documentation for export.
 ```
+
