@@ -1,7 +1,7 @@
 # Nyström Method
 This repository contains code for the Nystrom Method pertaining to the interior Dirichlet problem for the Laplace Equation
   
-# # Theoretical Formulation
+## Theoretical Formulation
   
 
 This notebook presents a simple example of how the Nyström Method can be used towards solving the Laplace Equation when considering a the scatterfield of a wave in the interior of a simple smooth geometry. For concreteness we shall use this method for solving the Dirichlet problem where we impose the condition that along the boundary $\Gamma$
@@ -210,7 +210,7 @@ $$
 
 Doing this for all $n$ values of $i$, we get a linear system that we can solve.
 
-# Observing Convergence of Numerical Solution
+## Observing Convergence of Numerical Solution
   
 
 We shall use the harmonic function $g\left({{\textrm{x}}}\right)=x_1^2 -x_2^2$ as the forcing term on the boundary. By choice of $g$, we know that the solution to $[1]$ is $u\left({{\textrm{x}}}\right)=g\left({{\textrm{x}}}\right)$ everywhere in the domain $\Omega$
@@ -316,12 +316,12 @@ ylabel("Absolute Error", "Interpreter", "latex");
 
 ![figure_2.png](Nystrom_Method_images/figure_2.png)
 
-# # Comments:
+## Comments:
   
 
 We see that the error converges to machine precision extremely quickly (super algebraically fast in smooth domains). This is much faster than that which is observed in other popular methods for solving PDEs such as finite difference or finite element methods.
 
-# # Visualising the PDE Solution in the Unit Circle
+## Visualising the PDE Solution in the Unit Circle
   
 
 Now that we have established the correctness of our method, we shall plot the solution in the unit circle as a sanity check. 
