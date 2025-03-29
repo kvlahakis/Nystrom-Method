@@ -10,7 +10,7 @@ This notebook presents a simple example of how the Nyström Method can be used t
 
 
 $$
-u({\mathbf{\textit{x}}})=g({\mathbf{\textit{x}}}),
+u(\mathbf{x})=g({\mathbf{\textit{x}}}),
 $$
   
 
