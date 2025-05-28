@@ -10,44 +10,41 @@ This notebook presents a simple example of how the Nyström Method can be used t
 
 
 $$
-u(\mathbf{x})=g({\mathbf{\textit{x}}}),
+u(\text{x})=g(\text{x}),
 $$
   
 
-Note that here ${\mathbf{\textit{x}}}$ is a vector given by ${\mathbf{\textit{x}}}=\left(x_1 ,x_2 \right)$. All together we have
+Note that here $\text{x}$ is a vector given by $\text{x} = (x_1, \\: x_2)$. All together we have
 
   
 
 $$
-\Delta u\left({\mathbf{\textit{x}}}\right)=0,\:\:{\mathbf{\textit{x}}}\in \Omega ,
+\Delta u(\text{x}) = 0, \\: \mathbf{\textit{x}}\in \Omega ,
 $$
 > with                                            
 
 $$
-u({\mathbf{\textit{x}}})=g({\mathbf{\textit{x}}}),\:\:\forall {\mathbf{\textit{x}}}\in \Gamma
+u(\text{x})=g(\text{x}),\\: \forall {\mathbf{\textit{x}}}\in \Gamma
 $$
   
 
-For this problem, we use the double layer potential integral formulation of the solution. This is given by:
+For this problem, we use the double-layer potential integral formulation of the solution. This is given by:
 
   
 
 $$
-u\left({\mathbf{\textit{x}}}\right)=D\left\lbrack \varphi \right\rbrack \left({\mathbf{\textit{x}}}\right)=\int_{\Gamma } G({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\varphi ({\mathbf{\textit{y}}})ds({\mathbf{\textit{y}}})
+u(\text{x})= D\left\lbrack \varphi \right\rbrack (\text{x}) =\int_{\Gamma } G(\text{x}, \text{y}) \varphi(\text{y}) \\: ds(\text{y})
 $$
   
 
-where $G\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$ is the Green's function in free space and $\varphi$ satisfies the following relation:
+where $G(\text{x}, \\: \text{y})$ is the Green's function in free space and $\varphi$ satisfies the following relation:
 
   
 
                                                 
 $$
-\frac{\varphi (x)}{2}+\int_{\Gamma } G({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\varphi ({\mathbf{\textit{y}}})ds({\mathbf{\textit{y}}})=g\left({\mathbf{\textit{x}}}\right)\;\;\;{\mathbf{\textit{x}}}\in \Gamma
-$$                                          
-$$
-[2]
-$$
+\frac{\varphi(x)}{2}+\int_{\Gamma } G(\text{x}, \text{y}) \varphi(\text{y}) \\: ds(\text{y})=g(\text{x})\\:\\: \text{x} \in \Gamma 
+\\:\\:\\:\\: [2] $$
   
 
 It is known that the kernel $G\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$ for this problem is given by 
@@ -55,67 +52,54 @@ It is known that the kernel $G\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\
   
 
 $$
-G\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)\mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right):=-\frac{\left({\mathbf{\textit{x}}}-{\mathbf{\textit{y}}}\right)\cdot \nu \left({\mathbf{\textit{y}}}\right)}{2\pi {\left|{\mathbf{\textit{x}}}-{\mathbf{\textit{y}}}\right|}^2 }
+G(\text{x}, \text{y}) = \text{K}(\textit{x}, \text{y}):=-\frac{\left({\mathbf{\textit{x}}}-{\mathbf{\textit{y}}}\right)\cdot \nu \left({\mathbf{\textit{y}}}\right)}{2\pi {\left|{\mathbf{\textit{x}}}-{\mathbf{\textit{y}}}\right|}^2 }
 $$
   
 
-It is also known that this kernel is continuous along a boundary that is twice continuously differentiable, meaning that in the specified geometry \mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$ has a removable singularity at ${\mathbf{\textit{x}}}={\mathbf{\textit{y}}}$. Thus, at such points we can assign \mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)=\lim_{{\mathbf{\textit{x}}}\to {\mathbf{\textit{y}}}}\mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)$
+It is also known that this kernel is continuous along a boundary that is twice continuously differentiable, meaning that in the specified geometry $\text{K}(\text{x}, \text{y})$ has a removable singularity at $\text{x}=\text{y}$. Thus, at such points we can assign $\text{K}(\text{x},\text{y}) = \lim_{\text{x}\to \text{y}}\text{K}(\text{x}, \text{y})$
 
   
 
-We see that if we parametrize ${\mathbf{\textit{x}}}$ and ${\mathbf{\textit{y}}}$ as:
+We see that if we parametrize $\text{x}$ and $\text{y}$ as:
 
   
 
 $$
-{\mathbf{\textit{x}}}={\mathbf{\textit{r}}}(s)=\left(u(s),\:v(s)\right)
+\text{x}= {\mathbf{\textit{r}}}(s)=(u(s),\\:v(s))
 $$
 > and                                                
 
 $$
-{\mathbf{\textit{y}}}={\mathbf{\textit{r}}}(t)=\left(u(t),\:v(t)\right)
+\text{y}= {\mathbf{\textit{r}}}(t)=(u(t),\\:v(t))
 $$
   
 
-We get that  \mathbf{\textit{K}\left({\mathbf{\textit{x}}},{\mathbf{\textit{y}}}\right)=\tilde\mathbf{\textit{K}} (s,t):=\frac{-\left(u(s)-u(t)\right)v\prime (t)+\left(v(s)-v(t)\right)u\prime (t)}{2\pi \left|{\mathbf{\textit{r}}}\prime \left(t\right)\right|{\left|{\mathbf{\textit{r}}}\left(s\right)-{\mathbf{\textit{r}}}\left(t\right)\right|}^2 }$,
+We get that
 
-  
+$$
+\text{K}(\text{x}, \text{y})=\tilde{\text{K}} (s,t):=\frac{-\left(u(s)-u(t)\right)v\prime (t)+\left(v(s)-v(t)\right)u\prime (t)}{2\pi \left|{\mathbf{\textit{r}}}\prime \left(t\right)\right|{\left|{\mathbf{\textit{r}}}(s)-{\mathbf{\textit{r}}}(t)\right|}^2 },
+$$
 
-In particular also, we are interested in evaluating the limit of $\tilde\mathbf{\textit{K}} (s,t)$ as $s\to t$.
 
-  
+We are interested in evaluating the limit of $\tilde{\text{K}} (s,t)$ as $s\to t$.
+
 
 We begin by expanding $u(s)$ and $v(s)$ about $t$ up to the second order. This yields the following:
-
-  
-
                            
 $$
-u(s)=u(t)+(s-t)u\prime (t)+\frac{(s-t)^2 }{2}u\prime \prime (t)+\mathcal{O}((s-t)^3 )
-$$                  
+u(s)=u(t)+(s-t)u\prime(t)+\frac{(s-t)^2 }{2}u\prime \prime (t)+\mathcal{O}((s-t)^3 ) \\:\\:\\:\\: [3]
 $$
-[3]
-$$
+
 > and                                                                                                
-
-                           
+                         
 $$
-v(s)=v(t)+(s-t)v\prime (t)+\frac{(s-t)^2 }{2}v\prime \prime (t)+\mathcal{O}((s-t)^3 )
-$$                  
-$$
-[4]
+v(s)=v(t)+(s-t)v\prime (t)+\frac{(s-t)^2 }{2}v\prime \prime (t)+\mathcal{O}((s-t)^3 ) \\:\\:\\:\\: [4]
 $$
 
-We have also by extension that
-
-  
-
-                           
+We have also, by extension, that
+                   
 $$
-{\mathbf{\textit{r}}}(s)={\mathbf{\textit{r}}}(t)+(s-t){\mathbf{\textit{r}}}\prime (t)+\frac{(s-t)^2 }{2}{\mathbf{\textit{r}}}\prime \prime (t)+\mathcal{O}((s-t)^3 )
-$$                  
-$$
-[5]
+{\mathbf{\textit{r}}}(s)={\mathbf{\textit{r}}}(t)+(s-t){\mathbf{\textit{r}}}\prime(t)+\frac{(s-t)^2 }{2}{\mathbf{\textit{r}}}\prime\prime(t)+\mathcal{O}((s-t)^3 ) \\:\\:\\:\\: [5]
 $$
   
 
@@ -144,7 +128,7 @@ $$
 $$
   
 
-Substituting $[5]$ and expanding (where we would need to dot each term as you would in regular cross-multiplication of scalar quantities) we get that:
+Substituting $[5]$ and expanding (where we would need to dot each term as you would in regular cross-multiplication of scalar quantities), we get that:
 
   
 
@@ -158,12 +142,12 @@ $$
 $$
   
 
-Substituting into our expression for $\tilde\mathbf{\textit{K}} (s,t)$ gives:
+Substituting into our expression for $\tilde{\text{K}} (s,t)$ gives:
 
   
 
 $$
-\tilde\mathbf{\textit{K}} (s,t)=\frac{\frac{(s-t)^2 }{2}\left\lbrack v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))\right\rbrack }{2\pi (s-t)^2 {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 +O((s-t)^3 )}=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))}{4\pi {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 +O((s-t))}
+\tilde{\text{K}}(s,t)=\frac{\frac{(s-t)^2 }{2}\left\lbrack v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))\right\rbrack }{2\pi (s-t)^2 {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 +O((s-t)^3 )}=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)+O((s-t))}{4\pi {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 +O((s-t))}
 $$
   
 
@@ -172,32 +156,33 @@ Taking the limit as $s\to t$ we get
   
 
 $$
-\lim_{s\to t} \tilde\mathbf{\textit{K}} (s,t)=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)}{4\pi {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 }
+\lim_{s\to t} \tilde{\text{K}} (s,t)=\frac{v\prime \prime (t)u\prime (t)-u\prime \prime (t)v\prime (t)}{4\pi {\left|{\mathbf{\textit{r}}}\prime (t)\right|}^3 }
 $$
   
 
-For ${\mathbf{\textit{x}}}\in \Gamma$, we use the special notation $T_\mathbf{\textit{K}} [\varphi ](x)$ to denote the double layer operator 
-
-  
-
-$$
-D[\varphi ](x)=\int_{\Gamma }\mathbf{\textit{K}({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\:\varphi (y)\:d\sigma (y)
-$$
-  
-
-Altogether we get the following:
-
-$$
-{T_\mathbf{\textit{K}} [\varphi ](x)=\int_{\Gamma }\mathbf{\textit{K}({\mathbf{\textit{x}}},{\mathbf{\textit{y}}})\:\varphi (y)\:d\sigma (y)={\int_0^{2\pi } \tilde\mathbf{\textit{K}} (s,t)\:\varphi (t)\:|{\mathbf{\textit{r}}}\prime (t)|dt}}
-$$
-  
-
-We then discretize the boundary with $n$ points and use trapezoidal rule to get
+For ${\mathbf{\textit{x}}}\in \Gamma$, we use the special notation $T_{\text{K}} \left\lbrack \varphi \right\rbrack (x)$ to denote the double layer operator 
 
   
 
 $$
-{T_\mathbf{\textit{K}} [\varphi ](x_i )\approx {\sum_{j=0}^n \tilde\mathbf{\textit{K}} (t_i ,t_j )\:\varphi (t_j )\:|{\mathbf{\textit{r}}}\prime (t_j )|\Delta t}}
+D \left\lbrack \varphi \right\rbrack(x)=\int_{\Gamma } G(\text{x}, \text{y}) \varphi(\text{y}) \\: ds(\text{y}),
+$$
+  
+where $G(\text{x}, \text{y}) = \text{K}(\textit{x}, \text{y}).$
+
+Altogether, we get the following:
+
+$$
+T_{\text{K}} \left\lbrack \varphi \right\rbrack (x) =\int_{\Gamma } G(\text{x}, \text{y}) \varphi(\text{y}) \\: ds(\text{y})= \int_0^{2\pi } \tilde{\text{K}} (s,t)\\:\varphi (t) |{\mathbf{\textit{r}}}\prime (t)|dt
+$$
+  
+
+We then discretize the boundary with $n$ points and use the trapezoidal rule to get
+
+  
+
+$$
+T_{\text{K}} \left\lbrack \varphi \right\rbrack (x_i)\approx \sum_{j=0}^n \tilde{\text{K}} (t_i ,t_j )\\:\varphi (t_j )\\:|{\mathbf{\textit{r}}}\prime (t_j )|\Delta t
 $$
 
 We have from $[2]$ that 
@@ -205,10 +190,9 @@ We have from $[2]$ that
   
 
 $$
-\frac{1}{2}+{T_\mathbf{\textit{K}} [\varphi ](x_i )\approx \frac{1}{2}+{\sum_{j=0}^n \tilde\mathbf{\textit{K}} (t_i ,t_j )\:\varphi (t_j )\:|{\mathbf{\textit{r}}}\prime (t_j )|\Delta t=g(x_i )}}
+\frac{1}{2}+T_{\text{K}} \left\lbrack \varphi \right\rbrack (x_i)\approx \frac{1}{2}+\sum_{j=0}^n \tilde{\text{K}} (t_i ,t_j )\\:\varphi (t_j )\\:|{\mathbf{\textit{r}}}\prime (t_j )|\Delta t=g(x_i )
 $$
   
-
 Doing this for all $n$ values of $i$, we get a linear system that we can solve.
 
 ## Observing Convergence of Numerical Solution
