@@ -374,13 +374,3 @@ zlabel("$z$", "Interpreter","latex");
 
 ![figure_4.png](Nystrom_Method_images/figure_4.png)
 
-```matlab:Code
-mdfile = export("Nystrom_Method.mlx",Format="markdown",EmbedImages=true, ...
-    AcceptHTML=true)
-```
-
-```text:Output
-'EmbedImages' is not a recognized parameter. For a list of valid name-value pair arguments,
-see the documentation for export.
-```
-
